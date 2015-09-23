@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		387C62291BB1C57C002ADAA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62281BB1C57C002ADAA0 /* main.m */; };
+		387C622C1BB1C57C002ADAA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C622B1BB1C57C002ADAA0 /* AppDelegate.m */; };
+		387C622F1BB1C57C002ADAA0 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C622E1BB1C57C002ADAA0 /* GameScene.m */; };
+		387C62311BB1C57C002ADAA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 387C62301BB1C57C002ADAA0 /* GameScene.sks */; };
+		387C62341BB1C57C002ADAA0 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62331BB1C57C002ADAA0 /* GameViewController.m */; };
+		387C62371BB1C57C002ADAA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387C62351BB1C57C002ADAA0 /* Main.storyboard */; };
+		387C62391BB1C57C002ADAA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 387C62381BB1C57C002ADAA0 /* Assets.xcassets */; };
+		387C623C1BB1C57C002ADAA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 387C623A1BB1C57C002ADAA0 /* LaunchScreen.storyboard */; };
+		387C625C1BB1C5B2002ADAA0 /* AgentTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62461BB1C5B2002ADAA0 /* AgentTile.m */; settings = {ASSET_TAGS = (); }; };
+		387C625D1BB1C5B2002ADAA0 /* CastleTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62491BB1C5B2002ADAA0 /* CastleTile.m */; settings = {ASSET_TAGS = (); }; };
+		387C625E1BB1C5B2002ADAA0 /* MapTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C624C1BB1C5B2002ADAA0 /* MapTile.m */; settings = {ASSET_TAGS = (); }; };
+		387C625F1BB1C5B2002ADAA0 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62501BB1C5B2002ADAA0 /* Player.m */; settings = {ASSET_TAGS = (); }; };
+		387C62601BB1C5B2002ADAA0 /* ResourceTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62531BB1C5B2002ADAA0 /* ResourceTile.m */; settings = {ASSET_TAGS = (); }; };
+		387C62611BB1C5B2002ADAA0 /* castle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387C62551BB1C5B2002ADAA0 /* castle@2x.png */; settings = {ASSET_TAGS = (); }; };
+		387C62621BB1C5B2002ADAA0 /* debris@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387C62561BB1C5B2002ADAA0 /* debris@2x.png */; settings = {ASSET_TAGS = (); }; };
+		387C62631BB1C5B2002ADAA0 /* resource@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387C62571BB1C5B2002ADAA0 /* resource@2x.png */; settings = {ASSET_TAGS = (); }; };
+		387C62641BB1C5B2002ADAA0 /* square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387C62581BB1C5B2002ADAA0 /* square@2x.png */; settings = {ASSET_TAGS = (); }; };
+		387C62651BB1C5B2002ADAA0 /* warrior@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387C62591BB1C5B2002ADAA0 /* warrior@2x.png */; settings = {ASSET_TAGS = (); }; };
+		387C62661BB1C5B2002ADAA0 /* Map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 387C625B1BB1C5B2002ADAA0 /* Map.txt */; settings = {ASSET_TAGS = (); }; };
+		387C62681BB1DAAB002ADAA0 /* grass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 387C62671BB1DAAB002ADAA0 /* grass.jpg */; settings = {ASSET_TAGS = (); }; };
+		38AC3E251BB3069E00E70CC7 /* StateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC3E241BB3069E00E70CC7 /* StateMachine.m */; settings = {ASSET_TAGS = (); }; };
+		38AC3E2A1BB30BCE00E70CC7 /* WanderingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC3E291BB30BCE00E70CC7 /* WanderingState.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		387C62241BB1C57C002ADAA0 /* PixelWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		387C62281BB1C57C002ADAA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		387C622A1BB1C57C002ADAA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		387C622B1BB1C57C002ADAA0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		387C622D1BB1C57C002ADAA0 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		387C622E1BB1C57C002ADAA0 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		387C62301BB1C57C002ADAA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		387C62321BB1C57C002ADAA0 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		387C62331BB1C57C002ADAA0 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		387C62361BB1C57C002ADAA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		387C62381BB1C57C002ADAA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		387C623B1BB1C57C002ADAA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		387C623D1BB1C57C002ADAA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		387C62451BB1C5B2002ADAA0 /* AgentTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgentTile.h; sourceTree = "<group>"; };
+		387C62461BB1C5B2002ADAA0 /* AgentTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgentTile.m; sourceTree = "<group>"; };
+		387C62481BB1C5B2002ADAA0 /* CastleTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastleTile.h; sourceTree = "<group>"; };
+		387C62491BB1C5B2002ADAA0 /* CastleTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastleTile.m; sourceTree = "<group>"; };
+		387C624B1BB1C5B2002ADAA0 /* MapTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTile.h; sourceTree = "<group>"; };
+		387C624C1BB1C5B2002ADAA0 /* MapTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTile.m; sourceTree = "<group>"; };
+		387C624F1BB1C5B2002ADAA0 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		387C62501BB1C5B2002ADAA0 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		387C62521BB1C5B2002ADAA0 /* ResourceTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceTile.h; sourceTree = "<group>"; };
+		387C62531BB1C5B2002ADAA0 /* ResourceTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceTile.m; sourceTree = "<group>"; };
+		387C62551BB1C5B2002ADAA0 /* castle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "castle@2x.png"; sourceTree = "<group>"; };
+		387C62561BB1C5B2002ADAA0 /* debris@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "debris@2x.png"; sourceTree = "<group>"; };
+		387C62571BB1C5B2002ADAA0 /* resource@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resource@2x.png"; sourceTree = "<group>"; };
+		387C62581BB1C5B2002ADAA0 /* square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square@2x.png"; sourceTree = "<group>"; };
+		387C62591BB1C5B2002ADAA0 /* warrior@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warrior@2x.png"; sourceTree = "<group>"; };
+		387C625B1BB1C5B2002ADAA0 /* Map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Map.txt; sourceTree = "<group>"; };
+		387C62671BB1DAAB002ADAA0 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
+		38AC3E1D1BB3040700E70CC7 /* StateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StateMachine.h; path = Classes/StateMachine/StateMachine.h; sourceTree = "<group>"; };
+		38AC3E241BB3069E00E70CC7 /* StateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StateMachine.m; path = Classes/StateMachine/StateMachine.m; sourceTree = "<group>"; };
+		38AC3E261BB3085500E70CC7 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = State.h; path = Classes/StateMachine/State/State.h; sourceTree = "<group>"; };
+		38AC3E281BB30BCE00E70CC7 /* WanderingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WanderingState.h; path = Classes/StateMachine/WanderingState/WanderingState.h; sourceTree = "<group>"; };
+		38AC3E291BB30BCE00E70CC7 /* WanderingState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WanderingState.m; path = Classes/StateMachine/WanderingState/WanderingState.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		387C62211BB1C57C002ADAA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		387C621B1BB1C57C002ADAA0 = {
+			isa = PBXGroup;
+			children = (
+				387C62261BB1C57C002ADAA0 /* PixelWars */,
+				387C62251BB1C57C002ADAA0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		387C62251BB1C57C002ADAA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				387C62241BB1C57C002ADAA0 /* PixelWars.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		387C62261BB1C57C002ADAA0 /* PixelWars */ = {
+			isa = PBXGroup;
+			children = (
+				38AC3E231BB304A000E70CC7 /* State */,
+				38AC3E271BB30B8300E70CC7 /* WanderingState */,
+				387C62691BB1DDCE002ADAA0 /* StateMachine */,
+				387C625A1BB1C5B2002ADAA0 /* MapFiles */,
+				387C62431BB1C5B2002ADAA0 /* Classes */,
+				387C622A1BB1C57C002ADAA0 /* AppDelegate.h */,
+				387C622B1BB1C57C002ADAA0 /* AppDelegate.m */,
+				387C622D1BB1C57C002ADAA0 /* GameScene.h */,
+				387C622E1BB1C57C002ADAA0 /* GameScene.m */,
+				387C62301BB1C57C002ADAA0 /* GameScene.sks */,
+				387C62321BB1C57C002ADAA0 /* GameViewController.h */,
+				387C62331BB1C57C002ADAA0 /* GameViewController.m */,
+				387C62271BB1C57C002ADAA0 /* Supporting Files */,
+			);
+			path = PixelWars;
+			sourceTree = "<group>";
+		};
+		387C62271BB1C57C002ADAA0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				387C62351BB1C57C002ADAA0 /* Main.storyboard */,
+				387C62381BB1C57C002ADAA0 /* Assets.xcassets */,
+				387C623A1BB1C57C002ADAA0 /* LaunchScreen.storyboard */,
+				387C623D1BB1C57C002ADAA0 /* Info.plist */,
+				387C62281BB1C57C002ADAA0 /* main.m */,
+				387C62541BB1C5B2002ADAA0 /* Images */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		387C62431BB1C5B2002ADAA0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				387C624D1BB1C5B2002ADAA0 /* PlayerComponents */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		387C62441BB1C5B2002ADAA0 /* AgentTile */ = {
+			isa = PBXGroup;
+			children = (
+				387C62451BB1C5B2002ADAA0 /* AgentTile.h */,
+				387C62461BB1C5B2002ADAA0 /* AgentTile.m */,
+			);
+			name = AgentTile;
+			path = ../Classes/AgentTile;
+			sourceTree = "<group>";
+		};
+		387C62471BB1C5B2002ADAA0 /* CastleTile */ = {
+			isa = PBXGroup;
+			children = (
+				387C62481BB1C5B2002ADAA0 /* CastleTile.h */,
+				387C62491BB1C5B2002ADAA0 /* CastleTile.m */,
+			);
+			name = CastleTile;
+			path = ../Classes/CastleTile;
+			sourceTree = "<group>";
+		};
+		387C624A1BB1C5B2002ADAA0 /* MapTile */ = {
+			isa = PBXGroup;
+			children = (
+				387C624B1BB1C5B2002ADAA0 /* MapTile.h */,
+				387C624C1BB1C5B2002ADAA0 /* MapTile.m */,
+			);
+			name = MapTile;
+			path = ../Classes/MapTile;
+			sourceTree = "<group>";
+		};
+		387C624D1BB1C5B2002ADAA0 /* PlayerComponents */ = {
+			isa = PBXGroup;
+			children = (
+				387C624E1BB1C5B2002ADAA0 /* Player */,
+			);
+			path = PlayerComponents;
+			sourceTree = "<group>";
+		};
+		387C624E1BB1C5B2002ADAA0 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				387C624F1BB1C5B2002ADAA0 /* Player.h */,
+				387C62501BB1C5B2002ADAA0 /* Player.m */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		387C62511BB1C5B2002ADAA0 /* ResourceTile */ = {
+			isa = PBXGroup;
+			children = (
+				387C62521BB1C5B2002ADAA0 /* ResourceTile.h */,
+				387C62531BB1C5B2002ADAA0 /* ResourceTile.m */,
+			);
+			name = ResourceTile;
+			path = ../Classes/ResourceTile;
+			sourceTree = "<group>";
+		};
+		387C62541BB1C5B2002ADAA0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				387C62671BB1DAAB002ADAA0 /* grass.jpg */,
+				387C62551BB1C5B2002ADAA0 /* castle@2x.png */,
+				387C62561BB1C5B2002ADAA0 /* debris@2x.png */,
+				387C62571BB1C5B2002ADAA0 /* resource@2x.png */,
+				387C62581BB1C5B2002ADAA0 /* square@2x.png */,
+				387C62591BB1C5B2002ADAA0 /* warrior@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		387C625A1BB1C5B2002ADAA0 /* MapFiles */ = {
+			isa = PBXGroup;
+			children = (
+				387C624A1BB1C5B2002ADAA0 /* MapTile */,
+				387C62441BB1C5B2002ADAA0 /* AgentTile */,
+				387C62471BB1C5B2002ADAA0 /* CastleTile */,
+				387C62511BB1C5B2002ADAA0 /* ResourceTile */,
+				387C625B1BB1C5B2002ADAA0 /* Map.txt */,
+			);
+			path = MapFiles;
+			sourceTree = "<group>";
+		};
+		387C62691BB1DDCE002ADAA0 /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				38AC3E1D1BB3040700E70CC7 /* StateMachine.h */,
+				38AC3E241BB3069E00E70CC7 /* StateMachine.m */,
+			);
+			name = StateMachine;
+			sourceTree = "<group>";
+		};
+		38AC3E231BB304A000E70CC7 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				38AC3E261BB3085500E70CC7 /* State.h */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+		38AC3E271BB30B8300E70CC7 /* WanderingState */ = {
+			isa = PBXGroup;
+			children = (
+				38AC3E281BB30BCE00E70CC7 /* WanderingState.h */,
+				38AC3E291BB30BCE00E70CC7 /* WanderingState.m */,
+			);
+			name = WanderingState;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		387C62231BB1C57C002ADAA0 /* PixelWars */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 387C62401BB1C57C002ADAA0 /* Build configuration list for PBXNativeTarget "PixelWars" */;
+			buildPhases = (
+				387C62201BB1C57C002ADAA0 /* Sources */,
+				387C62211BB1C57C002ADAA0 /* Frameworks */,
+				387C62221BB1C57C002ADAA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PixelWars;
+			productName = PixelWars;
+			productReference = 387C62241BB1C57C002ADAA0 /* PixelWars.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		387C621C1BB1C57C002ADAA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Gandi Pirkov";
+				TargetAttributes = {
+					387C62231BB1C57C002ADAA0 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 387C621F1BB1C57C002ADAA0 /* Build configuration list for PBXProject "PixelWars" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 387C621B1BB1C57C002ADAA0;
+			productRefGroup = 387C62251BB1C57C002ADAA0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				387C62231BB1C57C002ADAA0 /* PixelWars */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		387C62221BB1C57C002ADAA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				387C62311BB1C57C002ADAA0 /* GameScene.sks in Resources */,
+				387C62631BB1C5B2002ADAA0 /* resource@2x.png in Resources */,
+				387C62621BB1C5B2002ADAA0 /* debris@2x.png in Resources */,
+				387C62661BB1C5B2002ADAA0 /* Map.txt in Resources */,
+				387C62641BB1C5B2002ADAA0 /* square@2x.png in Resources */,
+				387C62611BB1C5B2002ADAA0 /* castle@2x.png in Resources */,
+				387C623C1BB1C57C002ADAA0 /* LaunchScreen.storyboard in Resources */,
+				387C62391BB1C57C002ADAA0 /* Assets.xcassets in Resources */,
+				387C62681BB1DAAB002ADAA0 /* grass.jpg in Resources */,
+				387C62651BB1C5B2002ADAA0 /* warrior@2x.png in Resources */,
+				387C62371BB1C57C002ADAA0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		387C62201BB1C57C002ADAA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38AC3E2A1BB30BCE00E70CC7 /* WanderingState.m in Sources */,
+				387C625F1BB1C5B2002ADAA0 /* Player.m in Sources */,
+				38AC3E251BB3069E00E70CC7 /* StateMachine.m in Sources */,
+				387C62601BB1C5B2002ADAA0 /* ResourceTile.m in Sources */,
+				387C62341BB1C57C002ADAA0 /* GameViewController.m in Sources */,
+				387C625D1BB1C5B2002ADAA0 /* CastleTile.m in Sources */,
+				387C622C1BB1C57C002ADAA0 /* AppDelegate.m in Sources */,
+				387C622F1BB1C57C002ADAA0 /* GameScene.m in Sources */,
+				387C625C1BB1C5B2002ADAA0 /* AgentTile.m in Sources */,
+				387C625E1BB1C5B2002ADAA0 /* MapTile.m in Sources */,
+				387C62291BB1C57C002ADAA0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		387C62351BB1C57C002ADAA0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				387C62361BB1C57C002ADAA0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		387C623A1BB1C57C002ADAA0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				387C623B1BB1C57C002ADAA0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		387C623E1BB1C57C002ADAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		387C623F1BB1C57C002ADAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		387C62411BB1C57C002ADAA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PixelWars/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Home.PixelWars;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		387C62421BB1C57C002ADAA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PixelWars/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Home.PixelWars;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		387C621F1BB1C57C002ADAA0 /* Build configuration list for PBXProject "PixelWars" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				387C623E1BB1C57C002ADAA0 /* Debug */,
+				387C623F1BB1C57C002ADAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		387C62401BB1C57C002ADAA0 /* Build configuration list for PBXNativeTarget "PixelWars" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				387C62411BB1C57C002ADAA0 /* Debug */,
+				387C62421BB1C57C002ADAA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 387C621C1BB1C57C002ADAA0 /* Project object */;
+}
