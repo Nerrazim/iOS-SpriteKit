@@ -44,8 +44,8 @@
     agent.yScale = self.yScale;
     agent.position = self.position;
     agent.mapPosition = self.mapPosition;
-    
-    
+    agent.parentTile = self;
+    agent.zPosition = self.zPosition + 1;
     [self.owner.ownedAgents addObject:agent];
     
     [_delegate spawnAgent:agent];

@@ -24,6 +24,7 @@
     if(self = [super initWithImageNamed:name]) {
         _tileType = tileType;
         _mapPosition  = mapPosition;
+        _tileId = [NSString stringWithFormat:@"%d", (int)_mapPosition.x + _mapPosition.y];
         [self addSpecialImageForType:_tileType];
         
     }

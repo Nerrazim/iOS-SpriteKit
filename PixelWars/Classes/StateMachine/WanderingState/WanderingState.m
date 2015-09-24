@@ -8,6 +8,7 @@
 
 #import "WanderingState.h"
 #import "AgentTile.h"
+#import "Algorithums.h"
 
 @interface WanderingState() 
 
@@ -31,20 +32,18 @@
     
 }
 
+
+
 -(void) Execute:(AgentTile*)agent
 {
     
-    NSArray<NSArray*>* visiblieTiles = [agent getVisibleTilesForPosition];
+    NSArray<NSArray*>* map = [agent getMap];
     
-    int i = arc4random_uniform((int)visiblieTiles.count);
-    int j = arc4random_uniform((int)visiblieTiles[i].count);
+    MapTile* tileToMoveTo = nil;
     
-    [agent moveToTile:visiblieTiles[arc4random_uniform(i)][j]];
-//    for (int i = 0; i < visiblieTiles.count; ++i) {
-//        for (int j = 0; j < visiblieTiles[i].count; ++j) {
-//            
-//        }
-//    }
+    NSArray* tiles = [Algorithums getNodeNeighborNodes:agent.parentTile forMap:map withAgent:agent].allObjects;
+    tileToMoveTo = tiles[arc4random_uniform((int)tiles.count)];
+    [agent moveToTile:tileToMoveTo];
 }
 
 -(void) Exit:(AgentTile*)agent

@@ -15,14 +15,14 @@ const static int AGENT_VISIBILITY_RANGE = 4;
 
 @protocol AgentDelegate <NSObject>
 
--(NSArray*) getVisibleTilesForPosition:(CGPoint)position;
+-(NSArray*) getMap;
 
 @end
 
 @interface AgentTile : SKSpriteNode
 
 @property (nonatomic, weak) id<AgentDelegate> delegate;
-
+@property (nonatomic, weak) MapTile* parentTile;
 @property (nonatomic, assign) CGPoint mapPosition;
 @property (nonatomic, strong) StateMachine* stateMachine;
 @property (nonatomic, strong) Player* owner;
@@ -32,7 +32,7 @@ const static int AGENT_VISIBILITY_RANGE = 4;
 -(void)update:(CFTimeInterval)currentTime;
 
 
--(NSArray*)getVisibleTilesForPosition;
+-(NSArray*)getMap;
 -(void)moveToTile:(MapTile*)position;
 
 @end

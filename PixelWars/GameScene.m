@@ -77,13 +77,14 @@
             MapTile* tile = _map[i][j];
             tile.xScale = 0.3;
             tile.yScale = 0.3;
-            
+            tile.zPosition = 2;
             tile.position = CGPointMake((tile.size.width/2 + j * tile.size.width) + 30, (tile.size.height/2 + (_map.count - i) * tile.size.height) - 20);
             
             SKSpriteNode * grass = [[SKSpriteNode alloc] initWithImageNamed:@"grass.jpg"];
             grass.xScale = 0.3;
             grass.yScale = 0.3;
             grass.position = tile.position;
+            grass.zPosition = 1;
             
             [self addChild:grass];
             [self addChild:tile];
@@ -116,32 +117,9 @@
     }
 }
 
--(NSArray*) getVisibleTilesForPosition:(CGPoint)position
+-(NSArray*) getMap
 {
-    int visibilityRange = AGENT_VISIBILITY_RANGE;
-    
-    NSMutableArray<NSMutableArray*>* visibleTiles = [NSMutableArray array];
-    
-    int visibleTilesVerticalIndex = 0;
-    
-    for(int i = position.x - visibilityRange; i < position.x + visibilityRange; ++i)
-    {
-        
-        if(i < 0 || i  > _map.count - 1) continue;
-        
-        [visibleTiles addObject:[NSMutableArray array]];
-        
-        for(int j = position.y - visibilityRange; j < position.y + visibilityRange; ++j)
-        {
-            if(j < 0 || j  > _map[i].count - 1) continue;
-            
-            [visibleTiles[visibleTilesVerticalIndex] addObject:_map[i][j]];
-        }
-        
-        ++visibleTilesVerticalIndex;
-    }
-    
-    return visibleTiles;
+    return _map;
 }
 
 -(void) spawnAgent:(AgentTile*)agent

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38005FF21BB46B7C00321F17 /* Algorithums.m in Sources */ = {isa = PBXBuildFile; fileRef = 38005FF11BB46B7C00321F17 /* Algorithums.m */; settings = {ASSET_TAGS = (); }; };
+		38005FF71BB4880F00321F17 /* CaptureResourceState.m in Sources */ = {isa = PBXBuildFile; fileRef = 38005FF61BB4880F00321F17 /* CaptureResourceState.m */; settings = {ASSET_TAGS = (); }; };
+		38005FFA1BB4882A00321F17 /* CaptureCastleState.m in Sources */ = {isa = PBXBuildFile; fileRef = 38005FF91BB4882A00321F17 /* CaptureCastleState.m */; settings = {ASSET_TAGS = (); }; };
 		387C62291BB1C57C002ADAA0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C62281BB1C57C002ADAA0 /* main.m */; };
 		387C622C1BB1C57C002ADAA0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C622B1BB1C57C002ADAA0 /* AppDelegate.m */; };
 		387C622F1BB1C57C002ADAA0 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 387C622E1BB1C57C002ADAA0 /* GameScene.m */; };
@@ -32,6 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38005FF01BB46B7C00321F17 /* Algorithums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Algorithums.h; path = Classes/Algorithums/Algorithums.h; sourceTree = "<group>"; };
+		38005FF11BB46B7C00321F17 /* Algorithums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Algorithums.m; path = Classes/Algorithums/Algorithums.m; sourceTree = "<group>"; };
+		38005FF51BB4880F00321F17 /* CaptureResourceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureResourceState.h; path = Classes/StateMachine/CaptureResourceState/CaptureResourceState.h; sourceTree = "<group>"; };
+		38005FF61BB4880F00321F17 /* CaptureResourceState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureResourceState.m; path = Classes/StateMachine/CaptureResourceState/CaptureResourceState.m; sourceTree = "<group>"; };
+		38005FF81BB4882A00321F17 /* CaptureCastleState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureCastleState.h; path = Classes/StateMachine/CaptureCastleState/CaptureCastleState.h; sourceTree = "<group>"; };
+		38005FF91BB4882A00321F17 /* CaptureCastleState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureCastleState.m; path = Classes/StateMachine/CaptureCastleState/CaptureCastleState.m; sourceTree = "<group>"; };
 		387C62241BB1C57C002ADAA0 /* PixelWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PixelWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		387C62281BB1C57C002ADAA0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		387C622A1BB1C57C002ADAA0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,6 +89,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38005FEF1BB46B6400321F17 /* Algorithums */ = {
+			isa = PBXGroup;
+			children = (
+				38005FF01BB46B7C00321F17 /* Algorithums.h */,
+				38005FF11BB46B7C00321F17 /* Algorithums.m */,
+			);
+			name = Algorithums;
+			sourceTree = "<group>";
+		};
+		38005FF31BB487D500321F17 /* CaptureResourceState */ = {
+			isa = PBXGroup;
+			children = (
+				38005FF51BB4880F00321F17 /* CaptureResourceState.h */,
+				38005FF61BB4880F00321F17 /* CaptureResourceState.m */,
+			);
+			name = CaptureResourceState;
+			sourceTree = "<group>";
+		};
+		38005FF41BB487EA00321F17 /* CaptureCastleState */ = {
+			isa = PBXGroup;
+			children = (
+				38005FF81BB4882A00321F17 /* CaptureCastleState.h */,
+				38005FF91BB4882A00321F17 /* CaptureCastleState.m */,
+			);
+			name = CaptureCastleState;
+			sourceTree = "<group>";
+		};
 		387C621B1BB1C57C002ADAA0 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +135,9 @@
 		387C62261BB1C57C002ADAA0 /* PixelWars */ = {
 			isa = PBXGroup;
 			children = (
+				38005FF41BB487EA00321F17 /* CaptureCastleState */,
+				38005FF31BB487D500321F17 /* CaptureResourceState */,
+				38005FEF1BB46B6400321F17 /* Algorithums */,
 				38AC3E231BB304A000E70CC7 /* State */,
 				38AC3E271BB30B8300E70CC7 /* WanderingState */,
 				387C62691BB1DDCE002ADAA0 /* StateMachine */,
@@ -276,6 +315,7 @@
 				TargetAttributes = {
 					387C62231BB1C57C002ADAA0 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = G8E5HNSQZ4;
 					};
 				};
 			};
@@ -325,11 +365,14 @@
 			files = (
 				38AC3E2A1BB30BCE00E70CC7 /* WanderingState.m in Sources */,
 				387C625F1BB1C5B2002ADAA0 /* Player.m in Sources */,
+				38005FFA1BB4882A00321F17 /* CaptureCastleState.m in Sources */,
 				38AC3E251BB3069E00E70CC7 /* StateMachine.m in Sources */,
+				38005FF71BB4880F00321F17 /* CaptureResourceState.m in Sources */,
 				387C62601BB1C5B2002ADAA0 /* ResourceTile.m in Sources */,
 				387C62341BB1C57C002ADAA0 /* GameViewController.m in Sources */,
 				387C625D1BB1C5B2002ADAA0 /* CastleTile.m in Sources */,
 				387C622C1BB1C57C002ADAA0 /* AppDelegate.m in Sources */,
+				38005FF21BB46B7C00321F17 /* Algorithums.m in Sources */,
 				387C622F1BB1C57C002ADAA0 /* GameScene.m in Sources */,
 				387C625C1BB1C5B2002ADAA0 /* AgentTile.m in Sources */,
 				387C625E1BB1C5B2002ADAA0 /* MapTile.m in Sources */,
@@ -445,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PixelWars/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.PixelWars;
@@ -456,6 +500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PixelWars/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.PixelWars;

@@ -34,14 +34,15 @@
     [self.stateMachine update:currentTime];
 }
 
--(NSArray*)getVisibleTilesForPosition
+-(NSArray*)getMap
 {
-    return [self.delegate getVisibleTilesForPosition:self.mapPosition];
+    return [self.delegate getMap];
 }
 
 -(void)moveToTile:(MapTile*)tile;
 {
     self.mapPosition = tile.mapPosition;
+    self.parentTile = tile;
     [self runAction:[SKAction moveTo:tile.position duration:0.3f]];
 }
 
