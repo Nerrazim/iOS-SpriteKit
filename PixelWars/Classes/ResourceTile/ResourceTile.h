@@ -13,6 +13,9 @@
 @property (nonatomic, assign) double resourceModifier;
 
 -(instancetype) initWithPosition:(CGPoint)mapPosition;
+
+-(void)didBeginContactWith:(SKPhysicsBody*)physicsBody;
+
 -(void)update:(CFTimeInterval)currentTime;
 
 @end

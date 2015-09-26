@@ -24,8 +24,7 @@
 
 +(NSArray*)FindPathInMap:(NSArray<NSArray<MapTile *>*>*)map
                fromAgent:(AgentTile *)agent
-                  toTile:(MapTile *)toTile
-               withDepth:(int)depth;
+                  toTile:(MapTile *)toTile;
 
 +(NSMutableSet *) getNodeNeighborNodes:(MapTile*)node
                                 forMap:(NSArray<NSArray<MapTile *>*>*)map

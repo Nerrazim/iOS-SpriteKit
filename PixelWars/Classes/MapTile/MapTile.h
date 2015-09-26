@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Constants.h"
 
 @class Player;
 
@@ -20,11 +21,11 @@ enum TileType
 
 @interface MapTile : SKSpriteNode
 
-@property (nonatomic, strong) Player* owner;
+@property (nonatomic, weak) Player* owner;
 @property (nonatomic, strong) NSString* tileId;
 @property (nonatomic, assign, readonly) CGPoint mapPosition;
 @property (nonatomic, assign, readonly) enum TileType tileType;
-
+@property (nonatomic, assign) BOOL isThereAgentOnPosition;
 
 -(instancetype) initWithImageNamed:(NSString *)name position:(CGPoint)mapPosition andType:(enum TileType) tileType;
 

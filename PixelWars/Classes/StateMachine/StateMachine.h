@@ -16,7 +16,7 @@
     
 }
 
-@property (nonatomic, strong) AgentTile* m_pOwner;
+@property (nonatomic, weak) AgentTile* m_pOwner;
 
 @property (nonatomic, strong) NSObject<State>* m_pCurrentState;
 @property (nonatomic, strong) NSObject<State>* m_pPreviousState;

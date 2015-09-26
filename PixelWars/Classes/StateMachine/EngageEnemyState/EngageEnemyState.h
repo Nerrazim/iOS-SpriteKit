@@ -1,15 +1,15 @@
 //
-//  CaptureCastleState.h
+//  EngageEnemyState.h
 //  PixelWars
 //
-//  Created by Gandi Pirkov on 9/24/15.
+//  Created by Gandi Pirkov on 9/26/15.
 //  Copyright © 2015 Gandi Pirkov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "State.h"
 
-@interface CaptureCastleState : NSObject
+@interface EngageEnemyState : NSObject
 
 + (id)sharedInstance;
 

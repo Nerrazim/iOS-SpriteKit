@@ -10,10 +10,11 @@
 #import "MapTile.h"
 
 @class AgentTile;
+@class CastleTile;
 
 @protocol CastleDelegate <NSObject>
 
--(void) spawnAgent:(AgentTile*)agent;
+-(void) spawnAgentFromCastle:(CastleTile*)castle;
 
 @end
 
@@ -24,5 +25,7 @@
 -(instancetype) initWithPosition:(CGPoint)mapPosition;
 
 -(void)update:(CFTimeInterval)currentTime;
+
+-(void)didBeginContactWith:(SKPhysicsBody*)physicsBody;
 
 @end

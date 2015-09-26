@@ -36,14 +36,47 @@
 
 -(void) Execute:(AgentTile*)agent
 {
+    NSArray<MapTile*>* objectsInRange = [agent specialObjectsInRange];
     
-    NSArray<NSArray*>* map = [agent getMap];
-    
-    MapTile* tileToMoveTo = nil;
-    
-    NSArray* tiles = [Algorithums getNodeNeighborNodes:agent.parentTile forMap:map withAgent:agent].allObjects;
-    tileToMoveTo = tiles[arc4random_uniform((int)tiles.count)];
-    [agent moveToTile:tileToMoveTo];
+    if(objectsInRange.count > 0)
+    {
+        MapTile* closestObject;
+        CGFloat xDist;
+        CGFloat yDist;
+        CGFloat distance;
+        CGFloat previousDistance = INT_MAX;
+        
+        for(int i = 0; i < objectsInRange.count; ++i)
+        {
+            xDist = (agent.mapPosition.x - objectsInRange[i].mapPosition.x); //[2]
+            yDist = (agent.mapPosition.y - objectsInRange[i].mapPosition.y); //[3]
+            distance = sqrt((xDist * xDist) + (yDist * yDist));
+            if(distance < previousDistance) {
+                closestObject = objectsInRange[i];
+            }
+        }
+        
+        if(closestObject.tileType == TileTypeResource)
+        {
+            agent.currentTarget = closestObject;
+            [agent.stateMachine changeState:[CaptureResourceState sharedInstance]];
+
+        }
+        else if(closestObject.tileType == TileTypeSpawningPoint)
+        {
+            agent.currentTarget = closestObject;
+            [agent.stateMachine changeState:[CaptureCastleState sharedInstance]];
+        } 
+    }
+    else
+    {
+        MapTile* tileToMoveTo = nil;
+        NSArray* tiles = [agent objectsInRange];
+
+        tileToMoveTo = tiles[arc4random_uniform((int)tiles.count)];
+        agent.currentTarget = tileToMoveTo;
+        [agent moveToTarget];
+    }
 }
 
 -(void) Exit:(AgentTile*)agent

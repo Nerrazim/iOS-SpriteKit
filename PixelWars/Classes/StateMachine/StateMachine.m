@@ -23,11 +23,11 @@
     if(self = [super init]) {
         self.m_pOwner = owner;
         self.m_pCurrentState = currentState;
-        self.m_pPreviousState = currentState;
-        self.m_pGlobalState = currentState;
+        self.m_pPreviousState = previousState;
+        self.m_pGlobalState = globalState;
         
         m_ActionSpeed = 1;
-        m_lastActionTime = 0;
+        m_lastActionTime = 1;
     }
     
     return self;

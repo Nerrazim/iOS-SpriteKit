@@ -8,14 +8,23 @@
 
 #import "Player.h"
 
+@interface Player()
+
+@property (nonatomic, strong, readwrite) NSMutableArray<CastleTile*>* ownedCastles;
+@property (nonatomic, strong, readwrite) NSMutableArray<ResourceTile*>* ownedResources;
+@property (nonatomic, strong, readwrite) NSMutableArray<AgentTile*>* ownedAgents;
+
+@end
+
 @implementation Player
 
--(instancetype) init
+-(instancetype) initWithColor:(UIColor*)color
 {
     if(self = [super init]) {
         _ownedCastles = [NSMutableArray array];
         _ownedResources = [NSMutableArray array];
         _ownedAgents = [NSMutableArray array];
+        _playerColor = color;
     }
     
     return self;
@@ -48,6 +57,36 @@
     for(int i = 0; i < _ownedResources.count; ++i) {
         [_ownedResources[i] update:currentTime];
     }
+}
+
+-(void)addResource:(ResourceTile*)resource
+{
+    [_ownedResources addObject:resource];
+}
+
+-(void)removeResource:(ResourceTile*)resource
+{
+   [_ownedResources removeObject:resource];
+}
+
+-(void)addAgent:(AgentTile*)agent
+{
+    [_ownedAgents addObject:agent];
+}
+
+-(void)removeAgent:(AgentTile*)agent
+{
+    [_ownedAgents removeObject:agent];
+}
+
+-(void)addCastle:(CastleTile*)castle
+{
+    [_ownedCastles addObject:castle];
+}
+
+-(void)removeCastle:(CastleTile*)castle
+{
+    [_ownedCastles removeObject:castle];
 }
 
 

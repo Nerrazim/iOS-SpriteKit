@@ -9,9 +9,11 @@
 #import <SpriteKit/SpriteKit.h>
 #import "MapTile.h"
 #import "StateMachine.h"
+#import "WanderingState.h"
+#import "CaptureCastleState.h"
+#import "CaptureResourceState.h"
 
-
-const static int AGENT_VISIBILITY_RANGE = 4;
+const static int AGENT_VISIBILITY_RANGE = 8;
 
 @protocol AgentDelegate <NSObject>
 
@@ -21,18 +23,28 @@ const static int AGENT_VISIBILITY_RANGE = 4;
 
 @interface AgentTile : SKSpriteNode
 
-@property (nonatomic, weak) id<AgentDelegate> delegate;
+
+@property (nonatomic, weak) Player* owner;
 @property (nonatomic, weak) MapTile* parentTile;
 @property (nonatomic, assign) CGPoint mapPosition;
+@property (nonatomic, assign) MapTile* currentTarget;
 @property (nonatomic, strong) StateMachine* stateMachine;
-@property (nonatomic, strong) Player* owner;
+@property (nonatomic, weak) id<AgentDelegate> delegate;
+
 
 -(instancetype)init;
 
 -(void)update:(CFTimeInterval)currentTime;
 
+-(void) destroy;
 
 -(NSArray*)getMap;
+-(void)moveToTarget;
 -(void)moveToTile:(MapTile*)position;
+
+-(void)didBeginContactWith:(SKPhysicsBody*)physicsBody;
+
+-(NSArray<MapTile *> *)specialObjectsInRange;
+-(NSArray<MapTile *> *)objectsInRange;
 
 @end

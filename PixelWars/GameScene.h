@@ -12,9 +12,8 @@
 #import "ResourceTile.h"
 #import "AgentTile.h"
 
-@interface GameScene : SKScene <CastleDelegate, AgentDelegate>
+@interface GameScene : SKScene <CastleDelegate, AgentDelegate, SKPhysicsContactDelegate>
 
--(NSArray*) getVisibleTilesForPosition:(CGPoint)position;
--(void) spawnAgent:(AgentTile*)agent;
+-(void) spawnAgentFromCastle:(CastleTile*)castle;
 
 @end

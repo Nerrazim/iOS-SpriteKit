@@ -26,7 +26,7 @@
 
 @implementation Algorithums
 
-+(NSArray*)FindPathInMap:(NSArray<NSArray<MapTile *>*>*)map fromAgent:(AgentTile *)agent toTile:(MapTile *)toTile withDepth:(int)depth
++(NSArray*)FindPathInMap:(NSArray<NSArray<MapTile *>*>*)map fromAgent:(AgentTile *)agent toTile:(MapTile *)toTile
 {
     CGPoint fromPosition = agent.parentTile.mapPosition;
     
@@ -38,9 +38,7 @@
     NSMutableArray<MapTile*> *queue = [NSMutableArray arrayWithObject:startingNode];
     NSMutableArray<MapTile*>* searchedPath = [NSMutableArray array];
     
-    NSMutableDictionary<NSString*,Node*>* paths = [NSMutableDictionary dictionaryWithObject:[[Node alloc] initWithNode:startingNode
-                                                                                                           andParentId:nil]
-                                                                                     forKey:startingNode.tileId];
+    NSMutableDictionary<NSString*,Node*>* paths = [NSMutableDictionary dictionary];
     
     //BFS
     while ([queue count] > 0)
@@ -110,7 +108,8 @@
                        andAgent:(AgentTile*)agent
 {
     MapTile* node = map[x][y];
-    if(node.tileType != TileTypeWall && node.owner != agent.owner) {
+    
+    if(node.tileType != TileTypeWall && node.owner != agent.owner && node.isThereAgentOnPosition == NO ) {
         [set addObject:node];
     }
 }

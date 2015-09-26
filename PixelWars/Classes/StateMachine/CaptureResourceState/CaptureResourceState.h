@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "State.h"
 
-@interface CaptureResourceState : NSObject
+@interface CaptureResourceState : NSObject <State>
+
++ (id)sharedInstance;
+
+- (void)Enter:(AgentTile*)agent;
+
+- (void)Execute:(AgentTile*)agent;
+
+- (void)Exit:(AgentTile*)agent;
 
 @end

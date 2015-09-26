@@ -8,9 +8,11 @@
 
 #import "GameScene.h"
 #import "Player.h"
+#import "Algorithums.h"
 
 @interface GameScene() {
-    
+    BOOL isGameOver;
+    SKLabelNode* gameOver;
 }
 
 @property (nonatomic, strong) NSMutableArray<NSMutableArray*>* map;
@@ -24,6 +26,11 @@
 //Init the scene
 -(void)didMoveToView:(SKView *)view
 {
+    isGameOver = NO;
+    
+    self.physicsWorld.gravity = CGVectorMake(0,0);
+    self.physicsWorld.contactDelegate = self;
+    
     _map = [NSMutableArray array];
     _castles = [NSMutableArray array];
     _players = [NSMutableArray array];
@@ -31,6 +38,8 @@
     [self loadMapFromFile];
     [self loadMapInScene];
     [self initPlayers];
+    
+    gameOver = [[SKLabelNode alloc] initWithFontNamed:@"Halvetica"];
 }
 
 
@@ -63,6 +72,10 @@
             } else if([lineContent[j] intValue] == TileTypeResource) {
                 tile = [[ResourceTile alloc] initWithPosition:CGPointMake(i, j)];
             }
+//            Debug showing tilesPositions
+            SKLabelNode* node = [[SKLabelNode alloc] initWithFontNamed:@"Halvetica"];
+            [node setText:[NSString stringWithFormat:@" %d,%d", i, j]];
+            [tile addChild:node];
             
             [_map[i] addObject:tile];
         }
@@ -94,7 +107,7 @@
 
 -(void) initPlayers
 {
-    Player* playerOne = [[Player alloc] init];
+    Player* playerOne = [[Player alloc] initWithColor:[UIColor redColor]];
     playerOne.playerId = 0;
     _castles.firstObject.owner = playerOne;
     [playerOne.ownedCastles addObject:_castles.firstObject];
@@ -102,7 +115,7 @@
     [_players addObject:playerOne];
     
     if(_castles.count > 1) {
-        Player* playerTwo = [[Player alloc] init];
+        Player* playerTwo = [[Player alloc] initWithColor:[UIColor blueColor]];
          playerTwo.playerId = 1;
         _castles.lastObject.owner = playerTwo;
         [playerTwo.ownedCastles addObject:_castles.lastObject];
@@ -110,11 +123,45 @@
     }
 }
 
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody* firstBody = nil;
+    SKPhysicsBody* secondBody = nil;
+    
+    if(secondBody.categoryBitMask == agentsCategory) {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    } else {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    }
+    
+    if([firstBody.node respondsToSelector:@selector(didBeginContactWith:)])
+        [firstBody.node performSelector:@selector(didBeginContactWith:) withObject:secondBody afterDelay:0];
+    
+    if([secondBody.node respondsToSelector:@selector(didBeginContactWith:)])
+        [secondBody.node performSelector:@selector(didBeginContactWith:) withObject:firstBody afterDelay:0];
+}
+
 -(void)update:(CFTimeInterval)currentTime
 {
-    for(int i = 0; i < _players.count; ++i) {
-        [_players[i] update:currentTime];
+    if(!isGameOver) {
+        for(int i = 0; i < _players.count; ++i) {
+            if(_players[i].ownedCastles.count <= 0) {
+                if(_players[i].playerId == 0) {
+                    isGameOver = YES;
+                    [gameOver setText:@"Player 2 Wins!"];
+                    [self addChild:gameOver];
+                } else {
+                    [gameOver setText:@"Player 1 Wins!"];
+                    [self addChild:gameOver];
+                }
+            }
+            
+            [_players[i] update:currentTime];
+        }
     }
+    
 }
 
 -(NSArray*) getMap
@@ -122,9 +169,22 @@
     return _map;
 }
 
--(void) spawnAgent:(AgentTile*)agent
+-(void) spawnAgentFromCastle:(CastleTile*)castle
 {
+    AgentTile * agent = [[AgentTile alloc] init];
+    agent.owner = castle.owner;
+    agent.xScale = castle.xScale;
+    agent.yScale = castle.yScale;
+    agent.zPosition = castle.zPosition + 1;
+    
+    [castle.owner addAgent:agent];
     agent.delegate = self;
+    
+    MapTile* spawnPosition = [Algorithums getNodeNeighborNodes:castle forMap:_map withAgent:agent].anyObject;
+    
+    agent.position = spawnPosition.position;
+    agent.mapPosition = spawnPosition.mapPosition;
+    agent.parentTile = spawnPosition;
     
     [self addChild:agent];
 }

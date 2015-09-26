@@ -30,6 +30,8 @@
 		387C62651BB1C5B2002ADAA0 /* warrior@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 387C62591BB1C5B2002ADAA0 /* warrior@2x.png */; settings = {ASSET_TAGS = (); }; };
 		387C62661BB1C5B2002ADAA0 /* Map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 387C625B1BB1C5B2002ADAA0 /* Map.txt */; settings = {ASSET_TAGS = (); }; };
 		387C62681BB1DAAB002ADAA0 /* grass.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 387C62671BB1DAAB002ADAA0 /* grass.jpg */; settings = {ASSET_TAGS = (); }; };
+		3893977B1BB6945F00E3C6C8 /* Constants.h in Sources */ = {isa = PBXBuildFile; fileRef = 3893977A1BB6945F00E3C6C8 /* Constants.h */; settings = {ASSET_TAGS = (); }; };
+		3893977E1BB6E32900E3C6C8 /* EngageEnemyState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3893977D1BB6E32900E3C6C8 /* EngageEnemyState.m */; settings = {ASSET_TAGS = (); }; };
 		38AC3E251BB3069E00E70CC7 /* StateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC3E241BB3069E00E70CC7 /* StateMachine.m */; settings = {ASSET_TAGS = (); }; };
 		38AC3E2A1BB30BCE00E70CC7 /* WanderingState.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AC3E291BB30BCE00E70CC7 /* WanderingState.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -71,6 +73,9 @@
 		387C62591BB1C5B2002ADAA0 /* warrior@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warrior@2x.png"; sourceTree = "<group>"; };
 		387C625B1BB1C5B2002ADAA0 /* Map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Map.txt; sourceTree = "<group>"; };
 		387C62671BB1DAAB002ADAA0 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
+		3893977A1BB6945F00E3C6C8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		3893977C1BB6E32900E3C6C8 /* EngageEnemyState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EngageEnemyState.h; path = Classes/StateMachine/EngageEnemyState/EngageEnemyState.h; sourceTree = "<group>"; };
+		3893977D1BB6E32900E3C6C8 /* EngageEnemyState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EngageEnemyState.m; path = Classes/StateMachine/EngageEnemyState/EngageEnemyState.m; sourceTree = "<group>"; };
 		38AC3E1D1BB3040700E70CC7 /* StateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StateMachine.h; path = Classes/StateMachine/StateMachine.h; sourceTree = "<group>"; };
 		38AC3E241BB3069E00E70CC7 /* StateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StateMachine.m; path = Classes/StateMachine/StateMachine.m; sourceTree = "<group>"; };
 		38AC3E261BB3085500E70CC7 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = State.h; path = Classes/StateMachine/State/State.h; sourceTree = "<group>"; };
@@ -135,13 +140,14 @@
 		387C62261BB1C57C002ADAA0 /* PixelWars */ = {
 			isa = PBXGroup;
 			children = (
-				38005FF41BB487EA00321F17 /* CaptureCastleState */,
-				38005FF31BB487D500321F17 /* CaptureResourceState */,
 				38005FEF1BB46B6400321F17 /* Algorithums */,
 				38AC3E231BB304A000E70CC7 /* State */,
+				3893977F1BB6E33E00E3C6C8 /* EngageEnemyState */,
+				38005FF41BB487EA00321F17 /* CaptureCastleState */,
+				38005FF31BB487D500321F17 /* CaptureResourceState */,
 				38AC3E271BB30B8300E70CC7 /* WanderingState */,
 				387C62691BB1DDCE002ADAA0 /* StateMachine */,
-				387C625A1BB1C5B2002ADAA0 /* MapFiles */,
+				387C625A1BB1C5B2002ADAA0 /* MapObjects */,
 				387C62431BB1C5B2002ADAA0 /* Classes */,
 				387C622A1BB1C57C002ADAA0 /* AppDelegate.h */,
 				387C622B1BB1C57C002ADAA0 /* AppDelegate.m */,
@@ -158,6 +164,7 @@
 		387C62271BB1C57C002ADAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3893977A1BB6945F00E3C6C8 /* Constants.h */,
 				387C62351BB1C57C002ADAA0 /* Main.storyboard */,
 				387C62381BB1C57C002ADAA0 /* Assets.xcassets */,
 				387C623A1BB1C57C002ADAA0 /* LaunchScreen.storyboard */,
@@ -171,7 +178,7 @@
 		387C62431BB1C5B2002ADAA0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				387C624D1BB1C5B2002ADAA0 /* PlayerComponents */,
+				387C624E1BB1C5B2002ADAA0 /* Player */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -206,21 +213,14 @@
 			path = ../Classes/MapTile;
 			sourceTree = "<group>";
 		};
-		387C624D1BB1C5B2002ADAA0 /* PlayerComponents */ = {
-			isa = PBXGroup;
-			children = (
-				387C624E1BB1C5B2002ADAA0 /* Player */,
-			);
-			path = PlayerComponents;
-			sourceTree = "<group>";
-		};
 		387C624E1BB1C5B2002ADAA0 /* Player */ = {
 			isa = PBXGroup;
 			children = (
 				387C624F1BB1C5B2002ADAA0 /* Player.h */,
 				387C62501BB1C5B2002ADAA0 /* Player.m */,
 			);
-			path = Player;
+			name = Player;
+			path = PlayerComponents/Player;
 			sourceTree = "<group>";
 		};
 		387C62511BB1C5B2002ADAA0 /* ResourceTile */ = {
@@ -246,7 +246,7 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		387C625A1BB1C5B2002ADAA0 /* MapFiles */ = {
+		387C625A1BB1C5B2002ADAA0 /* MapObjects */ = {
 			isa = PBXGroup;
 			children = (
 				387C624A1BB1C5B2002ADAA0 /* MapTile */,
@@ -255,6 +255,7 @@
 				387C62511BB1C5B2002ADAA0 /* ResourceTile */,
 				387C625B1BB1C5B2002ADAA0 /* Map.txt */,
 			);
+			name = MapObjects;
 			path = MapFiles;
 			sourceTree = "<group>";
 		};
@@ -265,6 +266,15 @@
 				38AC3E241BB3069E00E70CC7 /* StateMachine.m */,
 			);
 			name = StateMachine;
+			sourceTree = "<group>";
+		};
+		3893977F1BB6E33E00E3C6C8 /* EngageEnemyState */ = {
+			isa = PBXGroup;
+			children = (
+				3893977C1BB6E32900E3C6C8 /* EngageEnemyState.h */,
+				3893977D1BB6E32900E3C6C8 /* EngageEnemyState.m */,
+			);
+			name = EngageEnemyState;
 			sourceTree = "<group>";
 		};
 		38AC3E231BB304A000E70CC7 /* State */ = {
@@ -366,8 +376,10 @@
 				38AC3E2A1BB30BCE00E70CC7 /* WanderingState.m in Sources */,
 				387C625F1BB1C5B2002ADAA0 /* Player.m in Sources */,
 				38005FFA1BB4882A00321F17 /* CaptureCastleState.m in Sources */,
+				3893977E1BB6E32900E3C6C8 /* EngageEnemyState.m in Sources */,
 				38AC3E251BB3069E00E70CC7 /* StateMachine.m in Sources */,
 				38005FF71BB4880F00321F17 /* CaptureResourceState.m in Sources */,
+				3893977B1BB6945F00E3C6C8 /* Constants.h in Sources */,
 				387C62601BB1C5B2002ADAA0 /* ResourceTile.m in Sources */,
 				387C62341BB1C57C002ADAA0 /* GameViewController.m in Sources */,
 				387C625D1BB1C5B2002ADAA0 /* CastleTile.m in Sources */,
@@ -493,6 +505,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.PixelWars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -505,6 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.PixelWars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
