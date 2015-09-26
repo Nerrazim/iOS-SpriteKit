@@ -73,9 +73,9 @@
                 tile = [[ResourceTile alloc] initWithPosition:CGPointMake(i, j)];
             }
 //            Debug showing tilesPositions
-            SKLabelNode* node = [[SKLabelNode alloc] initWithFontNamed:@"Halvetica"];
-            [node setText:[NSString stringWithFormat:@" %d,%d", i, j]];
-            [tile addChild:node];
+//            SKLabelNode* node = [[SKLabelNode alloc] initWithFontNamed:@"Halvetica"];
+//            [node setText:[NSString stringWithFormat:@" %d,%d", i, j]];
+//            [tile addChild:node];
             
             [_map[i] addObject:tile];
         }

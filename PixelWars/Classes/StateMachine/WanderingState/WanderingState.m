@@ -48,25 +48,30 @@
         
         for(int i = 0; i < objectsInRange.count; ++i)
         {
-            xDist = (agent.mapPosition.x - objectsInRange[i].mapPosition.x); //[2]
-            yDist = (agent.mapPosition.y - objectsInRange[i].mapPosition.y); //[3]
+            xDist = (agent.mapPosition.x - objectsInRange[i].mapPosition.x);
+            yDist = (agent.mapPosition.y - objectsInRange[i].mapPosition.y);
             distance = sqrt((xDist * xDist) + (yDist * yDist));
+            
             if(distance < previousDistance) {
                 closestObject = objectsInRange[i];
             }
         }
-        
-        if(closestObject.tileType == TileTypeResource)
-        {
+        if([closestObject isKindOfClass:[MapTile class]]) {
+            if(closestObject.tileType == TileTypeResource)
+            {
+                agent.currentTarget = closestObject;
+                [agent.stateMachine changeState:[CaptureResourceState sharedInstance]];
+                
+            }
+            else if(closestObject.tileType == TileTypeSpawningPoint)
+            {
+                agent.currentTarget = closestObject;
+                [agent.stateMachine changeState:[CaptureCastleState sharedInstance]];
+            }
+        } else if([closestObject isKindOfClass:[AgentTile class]]) {
             agent.currentTarget = closestObject;
-            [agent.stateMachine changeState:[CaptureResourceState sharedInstance]];
-
+            [agent.stateMachine changeState:[EngageEnemyState sharedInstance]];
         }
-        else if(closestObject.tileType == TileTypeSpawningPoint)
-        {
-            agent.currentTarget = closestObject;
-            [agent.stateMachine changeState:[CaptureCastleState sharedInstance]];
-        } 
     }
     else
     {

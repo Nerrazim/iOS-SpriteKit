@@ -7,7 +7,7 @@
 //
 
 #import "EngageEnemyState.h"
-
+#import "AgentTile.h"
 
 @implementation EngageEnemyState
 
@@ -25,12 +25,19 @@
 
 -(void) Enter:(AgentTile*)agent
 {
-    
+    NSLog(@"Target Engaged");
 }
 
 -(void) Execute:(AgentTile*)agent
 {
-    
+    if(agent.currentTarget != nil)
+    {
+        [agent moveToTarget];
+    }
+    else
+    {
+        [agent.stateMachine changeState:[WanderingState sharedInstance]];
+    }
 }
 
 -(void) Exit:(AgentTile*)agent

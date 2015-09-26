@@ -12,6 +12,7 @@
 #import "WanderingState.h"
 #import "CaptureCastleState.h"
 #import "CaptureResourceState.h"
+#import "EngageEnemyState.h"
 
 const static int AGENT_VISIBILITY_RANGE = 8;
 
@@ -41,6 +42,8 @@ const static int AGENT_VISIBILITY_RANGE = 8;
 -(NSArray*)getMap;
 -(void)moveToTarget;
 -(void)moveToTile:(MapTile*)position;
+
+-(BOOL) canAgentAttack;
 
 -(void)didBeginContactWith:(SKPhysicsBody*)physicsBody;
 

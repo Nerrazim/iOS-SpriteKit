@@ -8,7 +8,6 @@
 
 #import "CaptureResourceState.h"
 #import "AgentTile.h"
-#import "Algorithums.h"
 
 
 @implementation CaptureResourceState

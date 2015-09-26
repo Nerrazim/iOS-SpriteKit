@@ -13,7 +13,9 @@
 #import "Algorithums.h"
 
 @interface AgentTile() {
-
+    double m_attackSpeed;
+    double m_lastAttackTime;
+    BOOL m_canAttack;
 }
 
 @property (nonatomic, strong)  SKPhysicsBody* contactBody;
@@ -30,8 +32,11 @@
                                                    currentState:[WanderingState sharedInstance]
                                                   previousState:nil
                                                     globalState:nil];
+        m_attackSpeed = 5;
+        m_lastAttackTime = 0;
+        m_canAttack = YES;
         
-        _contactBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        _contactBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width/1.5, self.size.height/1.5)];
         _contactBody.contactTestBitMask = agentsAttackCategory | resourcesCategory | spawningPointsCategory;
         _contactBody.categoryBitMask = agentsCategory;
         
@@ -59,7 +64,7 @@
 
 -(void) destroy
 {
-    self.parentTile.isThereAgentOnPosition = false;
+    self.parentTile.agentOnPosition = nil;
     [self removeFromParent];
     [self.owner removeAgent:self];  
 }
@@ -79,10 +84,15 @@
                 continue;
             }
             
-            if (map[i][j].tileType == TileTypeResource && map[i][j].owner != self.owner) {
-                [foundObjects addObject:map[i][j]];
-            } else if (map[i][j].tileType == TileTypeSpawningPoint && map[i][j].owner != self.owner) {
-                [foundObjects addObject:map[i][j]];
+            MapTile* tile = map[i][j];
+            
+            if(tile.agentOnPosition != nil && tile.agentOnPosition.owner != self.owner) {
+                [foundObjects addObject:tile.agentOnPosition.parentTile];
+                break;
+            } else if (tile.tileType == TileTypeResource && tile.owner != self.owner) {
+                [foundObjects addObject:tile];
+            } else if (tile.tileType == TileTypeSpawningPoint && tile.owner != self.owner) {
+                [foundObjects addObject:tile];
             }
         }
     }
@@ -103,8 +113,13 @@
             if(j < 0 || j > map[i].count - 1) {
                 continue;
             }
-            
-            [foundObjects addObject:map[i][j]];
+            if(map[i][j].owner != self.owner && map[i][j].agentOnPosition == nil) {
+                [foundObjects addObject:map[i][j]];
+            } else if(map[i][j].agentOnPosition != nil) {
+                [foundObjects removeAllObjects];
+                [foundObjects addObject:map[i][j]];
+                break;
+            }
         }
     }
     
@@ -117,11 +132,28 @@
         [self destroy];
     } else if(physicsBody.categoryBitMask == spawningPointsCategory) {
         [self destroy];
+    } else if(physicsBody.categoryBitMask == agentsAttackCategory) {
+        if([physicsBody.node.parent isKindOfClass:[AgentTile class]]) {
+            AgentTile* otherAgent = (AgentTile*)physicsBody.node.parent;
+            if([otherAgent canAgentAttack] && otherAgent.owner != self.owner) {
+                [self destroy];
+            }
+        }
     }
+}
+
+-(BOOL) canAgentAttack
+{
+    return m_canAttack;
 }
 
 -(void)update:(CFTimeInterval)currentTime
 {
+    if(currentTime > m_lastAttackTime + m_attackSpeed) {
+        m_lastAttackTime = currentTime;
+        m_canAttack = YES;
+    }
+    
     [self.stateMachine update:currentTime];
 }
 
@@ -141,7 +173,7 @@
 
 -(void)moveToTile:(MapTile*)tile;
 {
-    self.parentTile.isThereAgentOnPosition = NO;
+    self.parentTile.agentOnPosition = nil;
     
     self.mapPosition = tile.mapPosition;
     self.parentTile = tile;
@@ -154,7 +186,7 @@
     
     [self runAction:[SKAction moveTo:tile.position duration:0.3f]];
     
-    self.parentTile.isThereAgentOnPosition = YES;
+    self.parentTile.agentOnPosition = self;
 }
 
 @end

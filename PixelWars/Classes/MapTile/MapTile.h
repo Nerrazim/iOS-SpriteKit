@@ -10,6 +10,7 @@
 #import "Constants.h"
 
 @class Player;
+@class AgentTile;
 
 enum TileType
 {
@@ -25,7 +26,7 @@ enum TileType
 @property (nonatomic, strong) NSString* tileId;
 @property (nonatomic, assign, readonly) CGPoint mapPosition;
 @property (nonatomic, assign, readonly) enum TileType tileType;
-@property (nonatomic, assign) BOOL isThereAgentOnPosition;
+@property (nonatomic, assign) AgentTile* agentOnPosition;
 
 -(instancetype) initWithImageNamed:(NSString *)name position:(CGPoint)mapPosition andType:(enum TileType) tileType;
 

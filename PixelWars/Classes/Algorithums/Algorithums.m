@@ -109,7 +109,7 @@
 {
     MapTile* node = map[x][y];
     
-    if(node.tileType != TileTypeWall && node.owner != agent.owner && node.isThereAgentOnPosition == NO ) {
+    if(node.tileType != TileTypeWall && node.owner != agent.owner && node.agentOnPosition == nil) {
         [set addObject:node];
     }
 }

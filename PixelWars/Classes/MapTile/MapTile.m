@@ -33,7 +33,7 @@
         _tileId = [NSString stringWithFormat:@"%d%d",(int)_mapPosition.x, (int)_mapPosition.y];
         [self addSpecialImageForType:_tileType];
         
-        self.isThereAgentOnPosition = NO;
+        self.agentOnPosition = nil;
     }
     
     return self;
