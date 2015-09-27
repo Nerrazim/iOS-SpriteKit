@@ -38,6 +38,7 @@
 {
     NSArray<MapTile*>* objectsInRange = [agent specialObjectsInRange];
     
+    //Checks if there is any special objects in range
     if(objectsInRange.count > 0)
     {
         MapTile* closestObject;
@@ -48,6 +49,7 @@
         CGFloat distance;
         CGFloat previousDistance = INT_MAX;
         
+        //Gets the closest special object in range
         for(int i = 0; i < objectsInRange.count; ++i)
         {
             xDist = (agent.mapPosition.x - objectsInRange[i].mapPosition.x);
@@ -63,12 +65,15 @@
             }
         }
         
+        
+        //Calculates the distance between the special object and the enemy
         xDist = (agent.mapPosition.x - enemyInRangeObject.mapPosition.x);
         yDist = (agent.mapPosition.y - enemyInRangeObject.mapPosition.y);
         
         CGFloat distanceToEnemy = sqrt((xDist * xDist) + (yDist * yDist));
         CGFloat distanceToClosestObject = sqrt((xDist * xDist) + (yDist * yDist));
         
+        //If the special object is closer remove the enemy and go for the resource
         if(distanceToClosestObject < distanceToEnemy) {
             enemyInRangeObject = nil;
         }
@@ -82,10 +87,12 @@
         {
             agent.currentTarget = closestObject;
             [agent.stateMachine changeState:[CaptureCastleState sharedInstance]];
-        } else if(enemyInRangeObject != nil) {
+        }
+        else if(enemyInRangeObject != nil) {
             agent.currentTarget = enemyInRangeObject;
             [agent.stateMachine changeState:[EngageEnemyState sharedInstance]];
-        } else {
+        }
+        else {
             [agent moveBlind];
         }
         
@@ -93,6 +100,7 @@
     }
     else
     {
+        //Moves the agent blindly
         [agent moveBlind];
     }
 }

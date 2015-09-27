@@ -75,7 +75,7 @@
         [queue removeObjectAtIndex:0];
     }
     
-    //returns path to the object
+    //returns path to the object in format for direct traversel
     return searchedPath.reverseObjectEnumerator.allObjects;
 }
 
@@ -84,6 +84,7 @@
     NSMutableArray *newNodes = [NSMutableArray array];
     CGPoint nodePosition = node.mapPosition;
     
+    //Checks if the neighbour node is in the map or not
     if(nodePosition.x < map.count - 1)
     {
         [self addNodeIfNeededToArray:newNodes fromMap:map atPositionX:(int)nodePosition.x + 1 PositionY:(int)nodePosition.y andAgent:agent];
@@ -114,12 +115,13 @@
                        andAgent:(AgentTile*)agent
 {
     MapTile* node = map[x][y];
-    
+    //Check if the node is traversable or is already owned by the agent's owner
     if(node.tileType != TileTypeWall && node.owner != agent.owner) {
         [array addObject:node];
     }
 }
 
+//Sets the nodes's parent
 +(void) setParent:(MapTile*)parent forNodes:(NSArray*)nodes inPaths:(NSMutableDictionary<NSString*,Node*>*)paths
 {
     for(int i = 0; i < nodes.count; ++i) {

@@ -22,10 +22,12 @@
 
 @interface Algorithums : NSObject
 
+//Gets the path from the agent to the target with BFS
 +(NSArray*)FindPathInMap:(NSArray<NSArray<MapTile *>*>*)map
                fromAgent:(AgentTile *)agent
                   toTile:(MapTile *)toTile;
 
+//Gets the node neighbours Up,Down,Left,Right
 +(NSMutableArray *) getNodeNeighborNodes:(MapTile*)node
                                 forMap:(NSArray<NSArray<MapTile *>*>*)map
                              withAgent:(AgentTile*)agent;

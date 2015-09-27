@@ -22,6 +22,7 @@
 
 -(instancetype) initWithColor:(UIColor*)color;
 
+//Returns spawnSpeed modifer depending on the player resource count
 -(double) getAllResourcesMofier;
 
 -(void)update:(CFTimeInterval)currentTime;

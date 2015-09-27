@@ -139,6 +139,7 @@
         secondBody = contact.bodyB;
     }
     
+    //Call contact delegates of the objects
     if([firstBody.node respondsToSelector:@selector(didBeginContactWith:)])
         [firstBody.node performSelector:@selector(didBeginContactWith:) withObject:secondBody afterDelay:0];
     
@@ -159,7 +160,7 @@
                     [gameOver setText:@"Player 1 Wins!"];
                 }
             }
-            
+            //Update players
             [_players[i] update:currentTime];
         }
     }
@@ -178,6 +179,7 @@
 
 -(void) spawnAgentFromCastle:(CastleTile*)castle
 {
+    //Create the agent and update its positions
     AgentTile * agent = [[AgentTile alloc] init];
     agent.owner = castle.owner;
     agent.xScale = castle.xScale;

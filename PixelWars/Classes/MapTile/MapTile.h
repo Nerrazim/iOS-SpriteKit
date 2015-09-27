@@ -22,10 +22,15 @@ enum TileType
 
 @interface MapTile : SKSpriteNode
 
+//Contains the tile owner if any
 @property (nonatomic, weak) Player* owner;
+//Tile id
 @property (nonatomic, strong) NSString* tileId;
+//Position in the map array
 @property (nonatomic, assign, readonly) CGPoint mapPosition;
+// Type of the tile from enum TileType
 @property (nonatomic, assign, readonly) enum TileType tileType;
+//Indicates if there is agent on the current tile
 @property (nonatomic, assign) AgentTile* agentOnPosition;
 
 -(instancetype) initWithImageNamed:(NSString *)name position:(CGPoint)mapPosition andType:(enum TileType) tileType;
