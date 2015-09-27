@@ -39,13 +39,20 @@
     Player* owner = ((AgentTile*)physicsBody.node).owner;
     if(self.owner != owner) {
         [owner addCastle:self];
+        [self.owner removeCastle:self];
         self.owner = owner;
     }
 }
 
 -(void)update:(CFTimeInterval)currentTime
 {
-    if(self.owner != nil && currentTime > m_lastSpawnTime + m_spawnSpeed * [self.owner getAllResourcesMofier]) {
+    CGFloat adjsutedSpawnSpeed = m_spawnSpeed - m_spawnSpeed * [self.owner getAllResourcesMofier];
+    
+    if (adjsutedSpawnSpeed <= 0) {
+        adjsutedSpawnSpeed = 1;
+    }
+
+    if(self.owner != nil && currentTime > m_lastSpawnTime + adjsutedSpawnSpeed) {
         m_lastSpawnTime = currentTime;
         [self spawnAgent];
     }
@@ -53,7 +60,8 @@
 
 -(void) spawnAgent
 {
-    [_delegate spawnAgentFromCastle:self];
+    if(self.owner.ownedAgents.count < 80)
+        [_delegate spawnAgentFromCastle:self];
 }
 
 

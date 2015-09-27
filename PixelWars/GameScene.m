@@ -40,6 +40,9 @@
     [self initPlayers];
     
     gameOver = [[SKLabelNode alloc] initWithFontNamed:@"Halvetica"];
+    gameOver.zPosition = 100;
+    [self addChild:gameOver];
+    gameOver.position = CGPointMake(self.size.width/2, self.size.height/2);
 }
 
 
@@ -151,10 +154,9 @@
                 if(_players[i].playerId == 0) {
                     isGameOver = YES;
                     [gameOver setText:@"Player 2 Wins!"];
-                    [self addChild:gameOver];
                 } else {
+                    isGameOver = YES;
                     [gameOver setText:@"Player 1 Wins!"];
-                    [self addChild:gameOver];
                 }
             }
             
@@ -169,6 +171,11 @@
     return _map;
 }
 
+-(NSArray*) getPlayers
+{
+    return _players;
+}
+
 -(void) spawnAgentFromCastle:(CastleTile*)castle
 {
     AgentTile * agent = [[AgentTile alloc] init];
@@ -180,7 +187,7 @@
     [castle.owner addAgent:agent];
     agent.delegate = self;
     
-    MapTile* spawnPosition = [Algorithums getNodeNeighborNodes:castle forMap:_map withAgent:agent].anyObject;
+    MapTile* spawnPosition = [Algorithums getNodeNeighborNodes:castle forMap:_map withAgent:agent].firstObject;
     
     agent.position = spawnPosition.position;
     agent.mapPosition = spawnPosition.mapPosition;

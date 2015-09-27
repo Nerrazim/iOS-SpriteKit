@@ -25,7 +25,7 @@
 
 -(void) Enter:(AgentTile*)agent
 {
-    NSLog(@"Target Engaged");
+    
 }
 
 -(void) Execute:(AgentTile*)agent

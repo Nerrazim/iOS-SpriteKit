@@ -19,6 +19,7 @@ const static int AGENT_VISIBILITY_RANGE = 8;
 @protocol AgentDelegate <NSObject>
 
 -(NSArray*) getMap;
+-(NSArray*) getPlayers;
 
 @end
 
@@ -27,8 +28,10 @@ const static int AGENT_VISIBILITY_RANGE = 8;
 
 @property (nonatomic, weak) Player* owner;
 @property (nonatomic, weak) MapTile* parentTile;
+
 @property (nonatomic, assign) CGPoint mapPosition;
 @property (nonatomic, assign) MapTile* currentTarget;
+
 @property (nonatomic, strong) StateMachine* stateMachine;
 @property (nonatomic, weak) id<AgentDelegate> delegate;
 
@@ -49,5 +52,7 @@ const static int AGENT_VISIBILITY_RANGE = 8;
 
 -(NSArray<MapTile *> *)specialObjectsInRange;
 -(NSArray<MapTile *> *)objectsInRange;
+
+-(void) moveBlind;
 
 @end

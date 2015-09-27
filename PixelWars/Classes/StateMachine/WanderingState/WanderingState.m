@@ -29,7 +29,7 @@
 
 -(void) Enter:(AgentTile*)agent
 {
-    
+
 }
 
 
@@ -41,6 +41,8 @@
     if(objectsInRange.count > 0)
     {
         MapTile* closestObject;
+        MapTile* enemyInRangeObject;
+        
         CGFloat xDist;
         CGFloat yDist;
         CGFloat distance;
@@ -55,32 +57,43 @@
             if(distance < previousDistance) {
                 closestObject = objectsInRange[i];
             }
+            
+            if(objectsInRange[i].agentOnPosition != nil) {
+                enemyInRangeObject = objectsInRange[i];
+            }
         }
-        if([closestObject isKindOfClass:[MapTile class]]) {
-            if(closestObject.tileType == TileTypeResource)
-            {
-                agent.currentTarget = closestObject;
-                [agent.stateMachine changeState:[CaptureResourceState sharedInstance]];
-                
-            }
-            else if(closestObject.tileType == TileTypeSpawningPoint)
-            {
-                agent.currentTarget = closestObject;
-                [agent.stateMachine changeState:[CaptureCastleState sharedInstance]];
-            }
-        } else if([closestObject isKindOfClass:[AgentTile class]]) {
+        
+        xDist = (agent.mapPosition.x - enemyInRangeObject.mapPosition.x);
+        yDist = (agent.mapPosition.y - enemyInRangeObject.mapPosition.y);
+        
+        CGFloat distanceToEnemy = sqrt((xDist * xDist) + (yDist * yDist));
+        CGFloat distanceToClosestObject = sqrt((xDist * xDist) + (yDist * yDist));
+        
+        if(distanceToClosestObject < distanceToEnemy) {
+            enemyInRangeObject = nil;
+        }
+        
+        if(closestObject.tileType == TileTypeResource)
+        {
             agent.currentTarget = closestObject;
-            [agent.stateMachine changeState:[EngageEnemyState sharedInstance]];
+            [agent.stateMachine changeState:[CaptureResourceState sharedInstance]];
         }
+        else if(closestObject.tileType == TileTypeSpawningPoint)
+        {
+            agent.currentTarget = closestObject;
+            [agent.stateMachine changeState:[CaptureCastleState sharedInstance]];
+        } else if(enemyInRangeObject != nil) {
+            agent.currentTarget = enemyInRangeObject;
+            [agent.stateMachine changeState:[EngageEnemyState sharedInstance]];
+        } else {
+            [agent moveBlind];
+        }
+        
+        
     }
     else
     {
-        MapTile* tileToMoveTo = nil;
-        NSArray* tiles = [agent objectsInRange];
-
-        tileToMoveTo = tiles[arc4random_uniform((int)tiles.count)];
-        agent.currentTarget = tileToMoveTo;
-        [agent moveToTarget];
+        [agent moveBlind];
     }
 }
 

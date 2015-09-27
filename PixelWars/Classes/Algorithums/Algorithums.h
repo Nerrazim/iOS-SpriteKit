@@ -15,7 +15,7 @@
 
 -(instancetype) initWithNode:(MapTile*)node andParentId:(NSString*)parentId;
 
-@property (nonatomic, strong) MapTile* node;
+@property (nonatomic, weak) MapTile* node;
 @property (nonatomic, assign) NSString* parentId;
 
 @end
@@ -26,7 +26,7 @@
                fromAgent:(AgentTile *)agent
                   toTile:(MapTile *)toTile;
 
-+(NSMutableSet *) getNodeNeighborNodes:(MapTile*)node
++(NSMutableArray *) getNodeNeighborNodes:(MapTile*)node
                                 forMap:(NSArray<NSArray<MapTile *>*>*)map
                              withAgent:(AgentTile*)agent;
 

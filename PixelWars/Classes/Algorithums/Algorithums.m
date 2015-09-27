@@ -34,11 +34,11 @@
     MapTile* startingNode = map[(int)fromPosition.x][(int)fromPosition.y];
     
     //Preparing visitedNodes and Queue objects
-    NSMutableSet<MapTile*> *visitedNodes = [NSMutableSet setWithObject:startingNode];
+    NSMutableDictionary<NSString*,MapTile*> *visitedNodes = [NSMutableDictionary dictionaryWithObject:startingNode forKey:startingNode.tileId];
     NSMutableArray<MapTile*> *queue = [NSMutableArray arrayWithObject:startingNode];
     NSMutableArray<MapTile*>* searchedPath = [NSMutableArray array];
     
-    NSMutableDictionary<NSString*,Node*>* paths = [NSMutableDictionary dictionary];
+    NSMutableDictionary<NSString*,Node*>* paths = [NSMutableDictionary dictionaryWithObject:[[Node alloc] initWithNode:startingNode andParentId:nil] forKey:startingNode.tileId];
     
     //BFS
     while ([queue count] > 0)
@@ -50,21 +50,27 @@
             
             Node* reviewedNode = [paths objectForKey:reviewedTile.tileId];
             
-            while(reviewedNode != nil) {
+            while(reviewedNode.parentId != nil) {
                 [searchedPath addObject:reviewedNode.node];
                 reviewedNode = [paths objectForKey:reviewedNode.parentId];
             }
             break;
         }
         
-        NSMutableSet *newNodes = [self getNodeNeighborNodes:reviewedTile forMap:map withAgent:agent];
+        NSMutableArray<MapTile*> *newNodes = [self getNodeNeighborNodes:reviewedTile forMap:map withAgent:agent];
+        NSMutableArray<MapTile*> *newNodesCopy = [NSMutableArray arrayWithArray:newNodes];
         
-        [newNodes minusSet:visitedNodes];
-        [self setParent:reviewedTile forNodes:newNodes.allObjects inPaths:paths];
+        for(int i = 0; i < newNodesCopy.count; ++i) {
+            if(visitedNodes[newNodesCopy[i].tileId]) {
+                [newNodes removeObject:newNodesCopy[i]];
+            } else {
+                [visitedNodes setObject:newNodesCopy[i] forKey:newNodesCopy[i].tileId];
+            }
+        }
         
-        [visitedNodes unionSet:newNodes];
+        [self setParent:reviewedTile forNodes:newNodes inPaths:paths];
         
-        [queue addObjectsFromArray:[newNodes allObjects]];
+        [queue addObjectsFromArray:newNodes];
         
         [queue removeObjectAtIndex:0];
     }
@@ -73,35 +79,35 @@
     return searchedPath.reverseObjectEnumerator.allObjects;
 }
 
-+(NSMutableSet *) getNodeNeighborNodes:(MapTile*)node forMap:(NSArray<NSArray<MapTile *>*>*)map withAgent:(AgentTile*)agent
++(NSMutableArray *) getNodeNeighborNodes:(MapTile*)node forMap:(NSArray<NSArray<MapTile *>*>*)map withAgent:(AgentTile*)agent
 {
-    NSMutableSet *newNodes = [NSMutableSet set];
+    NSMutableArray *newNodes = [NSMutableArray array];
     CGPoint nodePosition = node.mapPosition;
     
     if(nodePosition.x < map.count - 1)
     {
-        [self addNodeIfNeededToSet:newNodes fromMap:map atPositionX:(int)nodePosition.x + 1 PositionY:(int)nodePosition.y andAgent:agent];
+        [self addNodeIfNeededToArray:newNodes fromMap:map atPositionX:(int)nodePosition.x + 1 PositionY:(int)nodePosition.y andAgent:agent];
     }
     
     if(nodePosition.x > 0)
     {
-        [self addNodeIfNeededToSet:newNodes fromMap:map atPositionX:(int)nodePosition.x - 1 PositionY:(int)nodePosition.y andAgent:agent];
+        [self addNodeIfNeededToArray:newNodes fromMap:map atPositionX:(int)nodePosition.x - 1 PositionY:(int)nodePosition.y andAgent:agent];
     }
     
     if(nodePosition.y < map[(int)nodePosition.x].count - 1)
     {
-        [self addNodeIfNeededToSet:newNodes fromMap:map atPositionX:(int)nodePosition.x PositionY:(int)nodePosition.y + 1 andAgent:agent];
+        [self addNodeIfNeededToArray:newNodes fromMap:map atPositionX:(int)nodePosition.x PositionY:(int)nodePosition.y + 1 andAgent:agent];
     }
     
     if(nodePosition.y > 0)
     {
-        [self addNodeIfNeededToSet:newNodes fromMap:map atPositionX:(int)nodePosition.x PositionY:(int)nodePosition.y - 1 andAgent:agent];
+        [self addNodeIfNeededToArray:newNodes fromMap:map atPositionX:(int)nodePosition.x PositionY:(int)nodePosition.y - 1 andAgent:agent];
     }
     
     return newNodes;
 }
 
-+(void) addNodeIfNeededToSet:(NSMutableSet*)set
++(void) addNodeIfNeededToArray:(NSMutableArray*)array
                      fromMap:(NSArray<NSArray<MapTile *>*>*)map
                  atPositionX:(int)x
                    PositionY:(int)y
@@ -109,8 +115,8 @@
 {
     MapTile* node = map[x][y];
     
-    if(node.tileType != TileTypeWall && node.owner != agent.owner && node.agentOnPosition == nil) {
-        [set addObject:node];
+    if(node.tileType != TileTypeWall && node.owner != agent.owner) {
+        [array addObject:node];
     }
 }
 

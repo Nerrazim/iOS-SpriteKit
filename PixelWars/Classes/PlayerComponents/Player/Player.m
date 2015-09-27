@@ -38,9 +38,6 @@
         modifier += _ownedResources[i].resourceModifier;
     }
     
-    if(modifier <= 0)
-        modifier = 1;
-    
     return modifier;
 }
 

@@ -18,9 +18,9 @@
 
 @property (nonatomic, weak) AgentTile* m_pOwner;
 
-@property (nonatomic, strong) NSObject<State>* m_pCurrentState;
-@property (nonatomic, strong) NSObject<State>* m_pPreviousState;
-@property (nonatomic, strong) NSObject<State>* m_pGlobalState;
+@property (nonatomic, weak) NSObject<State>* m_pCurrentState;
+@property (nonatomic, weak) NSObject<State>* m_pPreviousState;
+@property (nonatomic, weak) NSObject<State>* m_pGlobalState;
 
 -(instancetype) initWithOwner:(AgentTile*)owner currentState:(NSObject<State>*)currentState
                                         previousState:(NSObject<State>*)previousState
